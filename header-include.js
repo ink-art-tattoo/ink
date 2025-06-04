@@ -27,6 +27,10 @@ function initHeaderFunctions() {
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
 
+
+           
+        
+
         // Check for saved theme or set dark mode as default
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -50,6 +54,20 @@ function initHeaderFunctions() {
         const menuBtn = document.getElementById('menuBtn');
         const closeBtn = document.getElementById('closeBtn');
         const mobileNav = document.getElementById('mobileNav');
+
+         if (menuBtn && closeBtn && navLinks) {
+        menuBtn.addEventListener('click', () => {
+            mobileNav.classList.add('active');
+            menuBtn.style.display = 'none';
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeBtn.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            menuBtn.style.display = 'block';
+            document.body.style.overflow = 'auto';
+        });
+        }
 
         menuBtn.addEventListener('click', () => {
             mobileNav.classList.add('active');
